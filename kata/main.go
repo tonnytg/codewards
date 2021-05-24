@@ -1,21 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var (
 	count int = 0
 	check bool = true
 )
 
-func solution(a, b string) bool {
-	fmt.Println("Checando A:", a, len(a))
-	fmt.Println("Checando B:", b, len(b))
+
+func correctsolution(str, ending string) bool {
+	return strings.HasSuffix(str, ending)
+}
+
+func mysolution(a, b string) bool {
+	//fmt.Printf("Checando A: %v Qt: %v %T \n", a, len(a))
+	//fmt.Printf("Checando B: %v Qt: %v %T \n", b, len(b))
 
 	for i := 0; i < len(a); i++ {
 		fmt.Println("A", string(a[i]))
 		for j := 0; j < len(b); j++ {
 			fmt.Println("B",string(b[j]))
-			if a[i] == b[j] {
+			if string(a[i]) == "" && string(b[j]) == "" {
+				return true
+			} else if a[i] == b[j] {
 				fmt.Println("A e B são iguais", string(a[i]), string(b[j]))
 				i++
 				count++;
@@ -32,5 +42,6 @@ func solution(a, b string) bool {
 }
 
 func main()  {
-	fmt.Println(solution("1oo", "100"))
+	fmt.Println(correctsolution("", ""))
+	fmt.Println(mysolution("", ""))
 }
